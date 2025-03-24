@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>Dashboard</h2>
+<p>Welcome, {{ session.user_email }}</p>
+{% if role == 'admin' %}
+  <a href="{{ url_for('admin_panel') }}" class="btn btn-success">Admin Panel</a>
+{% endif %}
+{% if role == 'staff' %}
+  <a href="{{ url_for('staff_panel') }}" class="btn btn-info">Staff Panel</a>
+{% endif %}
+{% endblock %}

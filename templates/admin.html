@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}Admin Panel{% endblock %}
+{% block content %}
+<h2>Admin Panel</h2>
+<h3>Assign Task</h3>
+<form method="POST">
+  <div class="form-group">
+    <label for="staff_email">Staff Email</label>
+    <input type="email" class="form-control" id="staff_email" name="staff_email" required>
+  </div>
+  <div class="form-group">
+    <label for="task_name">Task Name</label>
+    <input type="text" class="form-control" id="task_name" name="task_name" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Task Description</label>
+    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Assign Task</button>
+</form>
+
+<h3 class="mt-4">Task Progress</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Description</th>
+      <th>Staff Email</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+    <tr>
+      <td>{{ task.task_name }}</td>
+      <td>{{ task.description }}</td>
+      <td>{{ task.staff_email }}</td>
+      <td>{{ task.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
